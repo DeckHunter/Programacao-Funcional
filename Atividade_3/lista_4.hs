@@ -48,3 +48,25 @@ maior (x : xs) = if (x > (maior xs)) then x else (maior xs)
 
 corpo :: [Integer] -> [Integer]
 corpo xs = init xs
+
+--------------- | Paridade | --------------
+
+paridade:: [Bool] -> Bool
+paridade xs = odd impar_par 
+    where
+        impar_par = length (filter(== True) xs)
+
+--------------- | Uniao | --------------
+
+uniao :: [Integer] -> [Integer] -> [Integer]
+uniao [] [] =[]
+uniao [] (x:xs) =(x:xs)
+uniao (x:xs) [] =(x:xs)
+uniao (x:xs)(y:ys)
+    | x < y             = x:uniao xs (y:ys)
+    | x == y            = x: uniao xs ys
+    | otherwise         = y: uniao (x:xs) ys
+
+--------------- | Intersec | --------------
+intersec :: [Integer] -> [Integer] -> [Integer]
+intersec xs ys = reverse([ y | y <- ys, y `elem` xs ])
