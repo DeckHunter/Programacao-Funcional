@@ -11,10 +11,10 @@ type Armarios = Map.Map Int (Estado, Codigo)
 consulta :: Int -> Armarios -> Maybe Estado
 consulta indice armarios = 
     case Map.lockers indice armarios of
-        Nothing -> Left $ "Locker number " ++ show indice ++ " doesn't exist!"  
+        Nothing -> Left $ "Numero : " ++ show indice ++ " Não Existe"  
         Just (Estado, Codigo) -> if Estado /= Alugado   
                                 then Right Codigo  
-                                else Left $ "Locker " ++ show indice ++ " is already taken!"  
+                                else Left $ "Bloqueado " ++ show indice ++ " Já Esta Alugado"  
 
 -- dado o número do armário, retorna Right armário ou Left "Armario nao existe"
 pegarArmario :: Int -> Armarios -> Either String Armario
